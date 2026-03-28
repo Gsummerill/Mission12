@@ -1,0 +1,16 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.bookstore-card {
+  border: 0;
+  border-radius: 1rem;
+}
+
+.price-pill {
+  font-weight: 600;
+}
+
+.cart-sticky {
+  top: 1rem;
+}

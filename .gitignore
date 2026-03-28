@@ -1,0 +1,5 @@
+frontend/bookstore-client/node_modules/
+backend/BookstoreApi/bin/
+backend/BookstoreApi/obj/
+frontend/bookstore-client/dist/
+.DS_Store
