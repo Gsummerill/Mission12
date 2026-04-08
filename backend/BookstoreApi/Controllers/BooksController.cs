@@ -1,4 +1,5 @@
 using BookstoreApi.Data;
+using BookstoreApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -63,5 +64,54 @@ public class BooksController(BookstoreContext context) : ControllerBase
             .ToListAsync();
 
         return Ok(categories);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddBook([FromBody] Book newBook)
+    {
+        context.Books.Add(newBook);
+        await context.SaveChangesAsync();
+        return CreatedAtAction(nameof(GetBooks), new { id = newBook.BookId }, newBook);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateBook(int id, [FromBody] Book updatedBook)
+    {
+        if (id != updatedBook.BookId)
+        {
+            return BadRequest();
+        }
+
+        var existingBook = await context.Books.FindAsync(id);
+        if (existingBook == null)
+        {
+            return NotFound();
+        }
+
+        existingBook.Title = updatedBook.Title;
+        existingBook.Author = updatedBook.Author;
+        existingBook.Publisher = updatedBook.Publisher;
+        existingBook.Isbn = updatedBook.Isbn;
+        existingBook.Classification = updatedBook.Classification;
+        existingBook.Category = updatedBook.Category;
+        existingBook.PageCount = updatedBook.PageCount;
+        existingBook.Price = updatedBook.Price;
+
+        await context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteBook(int id)
+    {
+        var book = await context.Books.FindAsync(id);
+        if (book == null)
+        {
+            return NotFound();
+        }
+
+        context.Books.Remove(book);
+        await context.SaveChangesAsync();
+        return NoContent();
     }
 }
