@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Book } from '../types/Book';
 
-const API_URL = 'http://localhost:5000/api/books';
+const API_URL = 'https://bookstore-api-george.azurewebsites.net/api/books';
 
 type SortOrder = 'asc' | 'desc';
 

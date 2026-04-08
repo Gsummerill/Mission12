@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/components/adminbooks.tsx","./src/components/booklist.tsx","./src/components/bookstorepage.tsx","./src/components/cartsummary.tsx","./src/types/book.ts","./src/types/cartitem.ts"],"version":"5.9.3"}

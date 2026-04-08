@@ -102,9 +102,7 @@ function BookstorePage() {
   );
 
   return (
-    <div className="container">
-      {/* Using Bootstrap grid system with row, col-lg-8, and col-lg-4 to arrange the book list and cart summary side by side on larger screens. */}
-      {/* Using Bootstrap sticky-top and border-start to create a persistent cart panel with a distinct visual separation that was not used previously. */}
+    <div>
       <div className="row g-4 align-items-start">
         <div className="col-lg-8">
           <BookList
